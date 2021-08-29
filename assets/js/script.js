@@ -1,7 +1,8 @@
 // Assignment code here
-// List of possible characters, numbers, uppercase lowercase letters in arrays
 
-var SpecialCharacters = [
+// List of possible characters, numbers, uppercase to lowercase letters in arrays
+
+var specialCharacters = [
   "!",
   "#",
   "$",
@@ -93,6 +94,35 @@ var upperCaseLetters = [
   "Z",
 ];
 
+// Start of generate Password function
+
+function generatePassword() {
+  // Ask for length of password
+  var passwordLength = parseInt(
+    prompt("Please choose password length between 8 and 128")
+  );
+  // check if valid number is given in prompt
+  if (!passwordLength) {
+    alert("Please enter number between 8 and 128");
+  } else if (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = parseInt(
+      prompt("please select number between 8 and 128.")
+    );
+  } else {
+    var selectedNumbers = confirm(
+      "Will the password have numbers? OK yes CANCEL no"
+    );
+    var selectedLowerCase = confirm(
+      "Will the password have lower case letters? OK yes CANCEL no"
+    );
+    var selectedUpperCase = confirm(
+      "Will the password have upper case letters? OK yes CANCEL no"
+    );
+    var selectedSpecialCharacters = confirm(
+      "Will the password have special characters? OK yes CANCEL no"
+    );
+  }
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
