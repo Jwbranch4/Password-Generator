@@ -17,9 +17,21 @@ function getRandomSymbol() {
   var symbols = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~';
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
-console.log(getRandomSymbol());
 
-function generatePassword() {}
+function generatePassword() {
+  var passwordLength = prompt(
+    "Please input desired length of password between 8 and 128"
+  );
+
+  if (passwordLength > 8 && passwordLength < 128) {
+    var hasLowerCase = confirm("Do you want lower case letters?");
+    var hasUpperCase = confirm("Do you want Upper case letters?");
+    var hasNumber = confirm("Do you want numbers?");
+    var hasSymbols = confirm("Do you want symbols?");
+  } else {
+    alert("Need to pick number between 8 and 128");
+  }
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
