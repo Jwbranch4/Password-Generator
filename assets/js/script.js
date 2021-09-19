@@ -58,8 +58,17 @@ function generatePassword() {
       randomPassword += getRandomSymbol();
     }
   }
-  return randomPassword;
+  // needed to randomize the generated string for a more truly random password
+  // split password into an array then used the sort with random function then put back together with join
+  var shuffledPassword = randomPassword
+    .split("")
+    .sort(function () {
+      return 0.5 - Math.random();
+    })
+    .join("");
+  return shuffledPassword;
 }
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
