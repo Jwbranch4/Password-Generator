@@ -17,20 +17,48 @@ function getRandomSymbol() {
   var symbols = '!"#$%&()*+,-./:;<=>?@[]^_`{|}~';
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
-
+// function called by click event to create password
 function generatePassword() {
+  var randomPassword = "";
+  // prompt to get password length
   var passwordLength = prompt(
     "Please input desired length of password between 8 and 128"
   );
-
-  if (passwordLength > 8 && passwordLength < 128) {
+  // check for correct length and confirm windows to ask for further parameters.
+  if (passwordLength >= 8 && passwordLength <= 128) {
     var hasLowerCase = confirm("Do you want lower case letters?");
     var hasUpperCase = confirm("Do you want Upper case letters?");
     var hasNumber = confirm("Do you want numbers?");
     var hasSymbols = confirm("Do you want symbols?");
+    // if the number is not within scope
   } else {
     alert("Need to pick number between 8 and 128");
   }
+  // need to be able divide the number of function calls to make sure the selected parameters are used
+  var numberOfParameters = hasLowerCase + hasUpperCase + hasNumber + hasSymbols;
+  var numberOfTimesToCallFunction = passwordLength / numberOfParameters;
+  // calling the selected parameters
+  if (hasLowerCase) {
+    for (var i = 0; i < numberOfTimesToCallFunction; i++) {
+      randomPassword += getRandomLowerCaseLetter();
+    }
+  }
+  if (hasUpperCase) {
+    for (var i = 0; i < numberOfTimesToCallFunction; i++) {
+      randomPassword += getRandomUpperCaseLetter();
+    }
+  }
+  if (hasNumber) {
+    for (var i = 0; i < numberOfTimesToCallFunction; i++) {
+      randomPassword += getRandomNumber();
+    }
+  }
+  if (hasSymbols) {
+    for (var i = 0; i < numberOfTimesToCallFunction; i++) {
+      randomPassword += getRandomSymbol();
+    }
+  }
+  return randomPassword;
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
